@@ -1,9 +1,17 @@
 {
   "name": "pm-market-intel",
-  "description": "PM 視角的面向市場市調 skill：功能/成本/營收價值框架、產業鏈名單、競品比較、Markdown→Word 報告、定期名單 diff",
-  "version": "1.0.0",
-  "author": { "name": "EddyKuo", "url": "https://github.com/EddyKuo" },
+  "description": "給 PM 的面向市場市調 skill：功能/成本/營收價值框架、使用者/採購者/決策者痛點、代表性競品 teardown、產品取捨比較、分類缺口、可驗證的產品機會假說、Word 報告與定期更新閉環",
+  "version": "1.1.0",
+  "author": {
+    "name": "EddyKuo",
+    "url": "https://github.com/EddyKuo"
+  },
   "repository": "https://github.com/EddyKuo/pm-market-intel",
-  "license": "MIT",
-  "keywords": ["product-management", "market-research", "competitive-analysis"]
+  "keywords": [
+    "product-management",
+    "market-research",
+    "competitive-analysis",
+    "teardown",
+    "product-discovery"
+  ]
 }

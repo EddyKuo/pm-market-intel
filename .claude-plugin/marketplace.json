@@ -1,12 +1,15 @@
 {
   "name": "eddykuo-pm",
   "description": "Eddy 的產品管理工具：PM 視角市調等 Claude Code plugins",
-  "owner": { "name": "EddyKuo", "url": "https://github.com/EddyKuo" },
+  "owner": {
+    "name": "EddyKuo",
+    "url": "https://github.com/EddyKuo"
+  },
   "plugins": [
     {
       "name": "pm-market-intel",
       "source": "./plugins/pm-market-intel",
-      "description": "PM 視角的市場調研：功能/成本/營收框架、市場名單、競品比較、Word 報告、定期 diff"
+      "description": "給 PM 的市場調研：需求與角色痛點、競品 teardown 與取捨、分類缺口、可驗證的產品機會假說、Word 報告、定期更新閉環"
     }
   ]
 }

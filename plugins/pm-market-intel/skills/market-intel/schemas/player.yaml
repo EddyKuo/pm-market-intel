@@ -1,15 +1,16 @@
-# players.yaml 的格式：頂層是 list，每筆一個 player
-# 必填：id, name, role, primary_lens, regions, evidence, first_seen, last_verified, status
-- id: P-0001                      # 流水號，永不重用
+# players.yaml：頂層是 list，每筆一個 player（競品／生態系參與者）
+# 用途：理解產業結構與競品取捨，不是業務名單。名單求「代表性」而非「數量」。
+# 必填：id, name, roles, primary_lens, regions, depth, evidence, first_seen, last_verified, status
+- id: P-0001                      # P-四位數，永不重用（由 orchestrator 或 merge_scout.py 分配）
   name: "Example Energy Co., Ltd."
   aliases: ["範例能源", "Example Energy"]
   website: "https://example.com"
-  role: brand                     # brand | installer | channel | component | customer
+  roles: [brand, integrator]      # 可多選：brand | integrator | channel | component | platform
   hq: "TW"                        # ISO 國別碼
-  regions: ["TW", "JP"]           # 主要市場
+  regions: ["TW", "JP"]
   primary_lens: 成本              # 功能 | 成本 | 營收
   lenses: [成本, 營收]
-  segments: ["中型工廠", "商辦大樓"]   # 對應 10-value-map.md 的 segment
+  segments: [S-01, S-03]          # 對應 10-value-map.md 的 segment ID
   products:
     - name: "XYZ-100"
       category: "工商業儲能櫃"
@@ -17,10 +18,10 @@
       price: { amount: null, currency: TWD, tax_included: null, date: null, estimated: false }
       evidence: [E-0003]
   business_model: "設備銷售 + 年維運合約"
-  scale: { revenue: null, employees: null, note: null }
-  notable: ["2026 取得 XX 認證"]
+  depth: teardown                 # teardown（已做深度拆解）| profile（只建基本檔）
+  teardown: teardowns/P-0001.md   # depth=teardown 時必填
   evidence: [E-0001, E-0002]
   first_seen: 2026-10-28
   last_verified: 2026-10-28
   status: active                  # active | inactive
-  status_note: null
+  status_note: null               # inactive 或重新啟用時說明原因

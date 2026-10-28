@@ -1,10 +1,19 @@
-# evidence.yaml 的格式：頂層是 list，每筆一條證據
+# evidence.yaml：頂層是 list，每筆一條證據
+# 「來源可靠度」(confidence) 與「主張類型」(claim_type) 分開記錄：
+#   官網是 A 級來源，但它只能證明「廠商宣稱」，不能證明實際成效。
 - id: E-0001
-  claim: "Example Energy 於 2026 展會發表 XYZ-100 儲能櫃"   # 用自己的話寫，不貼原文
-  source_type: exhibition         # official | datasheet | exhibition | gov | media | report | sales_intel | web
-  source: "某展覽 2026 參展商名錄"
+  claim: "Example Energy 宣稱 XYZ-100 可降低需量電費 15–20%"   # 自己的話，不貼原文
+  claim_type: vendor_claim      # vendor_claim 廠商宣稱 | measured 實測/第三方測試 | customer_case 客戶案例
+                                # | user_voice 使用者評價 | official_data 官方統計/法規 | analysis 第三方分析 | inference 我方推論
+  source_type: official         # official | datasheet | docs | release_notes | job_posting | patent | exhibition
+                                # | gov | media | report | review | community | interview | web
+  source: "Example Energy 產品頁"
   url: "https://..."
-  published: 2026-04-15           # 來源發布日期，未知寫 null
+  origin: "Example Energy"      # 原始出處；轉載同一新聞稿的多篇報導 origin 相同，不算獨立來源
+  published: 2026-04-15         # 未知寫 null
   accessed: 2026-10-28
-  confidence: B                   # A 一手 | B 可信二手 | C 弱來源
-  related: [P-0001]               # 關聯的 player / segment
+  valid_until: null             # 有時效的資訊（價格、補助、法規）填到期或需複查日
+  scope: { region: TW, product_version: "XYZ-100 v2" }   # 可選：主張適用範圍
+  confidence: A                 # 來源可靠度：A 一手 | B 可信二手 | C 弱來源
+  related: [P-0001]             # 關聯的 P- / S- / O- ID
+  contradicts: []               # 與本條矛盾的 E- ID（反證）

@@ -1,34 +1,34 @@
-# 比較維度。core 不可刪（確保定期更新可 diff）；category_specific 依品類在專案中增補。
+# 比較維度（PM 取向）。core 不可刪，確保定期更新可比對；category_specific 依品類增補。
+# 價格與商業模式是輔助維度：PM 關心的是產品取捨與能力邊界。
 core:
+  - key: target_segment
+    label: 目標客群與主要角色（使用者／採購者）
   - key: lens_fit
     label: 主打價值（功能/成本/營收）
-  - key: target_segment
-    label: 目標客群
-  - key: product_range
-    label: 產品線廣度
-  - key: price_band
-    label: 價格帶
-    note: 記錄幣別、含稅、日期；無公開價寫 n/a
-  - key: business_model
-    label: 商業模式（賣斷/訂閱/分潤/服務）
-  - key: channel
-    label: 通路與交付方式（直銷/SI/經銷/線上）
-  - key: ecosystem
-    label: 生態系與整合（開放介面、合作夥伴、綁定程度）
-  - key: certification
-    label: 認證與法規符合
-  - key: footprint
-    label: 地理覆蓋與標竿案例
-  - key: strength
-    label: 主要優勢
-  - key: weakness
-    label: 主要弱點
+  - key: capability_boundary
+    label: 能力邊界（做得到／做不到／做得勉強）
+  - key: architecture
+    label: 架構與部署（雲／地端／混合、資料在哪）
+  - key: integration
+    label: 整合方式（開放介面、協定、生態系）
+  - key: onboarding
+    label: 導入成本（時間、需要誰、前置條件）
+  - key: ux
+    label: 使用體驗重點（依評價與文件）
+  - key: design_tradeoffs
+    label: 設計取捨（刻意不做什麼、優先做什麼）
+  - key: iteration
+    label: 迭代速度與 roadmap 訊號（release notes、職缺、專利）
+  - key: switching_cost
+    label: 切換成本與綁定
+  - key: user_voice
+    label: 使用者評價重點（抱怨／讚美）
+  - key: pricing_model
+    label: 定價模式（輔助）
 
 category_specific: []
-# 範例（能源/IoT 類品類可參考）：
+# 範例（能源/IoT 類可參考）：
 # - key: protocols
 #   label: 支援通訊協定
-# - key: cloud
-#   label: 雲端平台與資料主權
-# - key: warranty
-#   label: 保固與維運 SLA
+# - key: data_sovereignty
+#   label: 資料主權與資安認證
