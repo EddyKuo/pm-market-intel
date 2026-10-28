@@ -1,0 +1,26 @@
+# players.yaml 的格式：頂層是 list，每筆一個 player
+# 必填：id, name, role, primary_lens, regions, evidence, first_seen, last_verified, status
+- id: P-0001                      # 流水號，永不重用
+  name: "Example Energy Co., Ltd."
+  aliases: ["範例能源", "Example Energy"]
+  website: "https://example.com"
+  role: brand                     # brand | installer | channel | component | customer
+  hq: "TW"                        # ISO 國別碼
+  regions: ["TW", "JP"]           # 主要市場
+  primary_lens: 成本              # 功能 | 成本 | 營收
+  lenses: [成本, 營收]
+  segments: ["中型工廠", "商辦大樓"]   # 對應 10-value-map.md 的 segment
+  products:
+    - name: "XYZ-100"
+      category: "工商業儲能櫃"
+      key_specs: "100kW/215kWh, LFP"
+      price: { amount: null, currency: TWD, tax_included: null, date: null, estimated: false }
+      evidence: [E-0003]
+  business_model: "設備銷售 + 年維運合約"
+  scale: { revenue: null, employees: null, note: null }
+  notable: ["2026 取得 XX 認證"]
+  evidence: [E-0001, E-0002]
+  first_seen: 2026-10-28
+  last_verified: 2026-10-28
+  status: active                  # active | inactive
+  status_note: null

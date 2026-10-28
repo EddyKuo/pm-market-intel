@@ -1,0 +1,34 @@
+# 比較維度。core 不可刪（確保定期更新可 diff）；category_specific 依品類在專案中增補。
+core:
+  - key: lens_fit
+    label: 主打價值（功能/成本/營收）
+  - key: target_segment
+    label: 目標客群
+  - key: product_range
+    label: 產品線廣度
+  - key: price_band
+    label: 價格帶
+    note: 記錄幣別、含稅、日期；無公開價寫 n/a
+  - key: business_model
+    label: 商業模式（賣斷/訂閱/分潤/服務）
+  - key: channel
+    label: 通路與交付方式（直銷/SI/經銷/線上）
+  - key: ecosystem
+    label: 生態系與整合（開放介面、合作夥伴、綁定程度）
+  - key: certification
+    label: 認證與法規符合
+  - key: footprint
+    label: 地理覆蓋與標竿案例
+  - key: strength
+    label: 主要優勢
+  - key: weakness
+    label: 主要弱點
+
+category_specific: []
+# 範例（能源/IoT 類品類可參考）：
+# - key: protocols
+#   label: 支援通訊協定
+# - key: cloud
+#   label: 雲端平台與資料主權
+# - key: warranty
+#   label: 保固與維運 SLA

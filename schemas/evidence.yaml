@@ -1,0 +1,10 @@
+# evidence.yaml 的格式：頂層是 list，每筆一條證據
+- id: E-0001
+  claim: "Example Energy 於 2026 展會發表 XYZ-100 儲能櫃"   # 用自己的話寫，不貼原文
+  source_type: exhibition         # official | datasheet | exhibition | gov | media | report | sales_intel | web
+  source: "某展覽 2026 參展商名錄"
+  url: "https://..."
+  published: 2026-04-15           # 來源發布日期，未知寫 null
+  accessed: 2026-10-28
+  confidence: B                   # A 一手 | B 可信二手 | C 弱來源
+  related: [P-0001]               # 關聯的 player / segment
