@@ -14,34 +14,51 @@ brief → value-mapper → landscape-scout（可依角色平行）→ comparator
                      定期/搜：增量搜尋 + diff_landscape.py
 ```
 
-## 結構
+## 安裝（Claude Code）
 
-| 路徑 | 用途 |
-|---|---|
-| `SKILL.md` | Orchestrator：流程、證據規則、完成檢查 |
-| `agents/value-mapper.md` | 功能/成本/營收 → segment / use case |
-| `agents/landscape-scout.md` | 市場名單建立與增量更新 |
-| `agents/comparator.md` | 比較矩陣、定位、市場缺口 |
-| `schemas/` | `player`、`evidence`、`comparison-dims` 格式定義 |
-| `templates/` | `brief.md`、`report.md` |
-| `scripts/build_docx.py` | Markdown 報告 → Word |
-| `scripts/diff_landscape.py` | 兩份名單快照的差異報告 |
+在 Claude Code session 中執行：
 
-## 安裝
+```text
+/plugin marketplace add EddyKuo/pm-market-intel
+/plugin install pm-market-intel@eddykuo-pm
+```
+
+Claude Code 2.1.275 以上也可一步完成：
+
+```text
+/plugin install pm-market-intel --marketplace EddyKuo/pm-market-intel
+```
+
+或在 shell：
 
 ```bash
-git clone <this-repo> ~/.claude/skills/pm-market-intel
-pip install python-docx pyyaml
+claude plugin marketplace add EddyKuo/pm-market-intel
+claude plugin install pm-market-intel@eddykuo-pm
 ```
+
+報告轉 Word 需要：`pip install python-docx pyyaml`
+
+更新：`/plugin marketplace update eddykuo-pm`
 
 ## 使用
 
-在 Claude Code 中：「幫我做 <品類> 在 <地區> 的市調」或「更新 <專案> 的市調」。
+- 直接說：「幫我做 <品類> 在 <地區> 的市調」「更新 <專案> 的市調」，Claude 會自動載入
+- 或明確呼叫：`/pm-market-intel:market-intel <品類與範圍>`
 
-產出位於 `market-intel/<project-slug>/`，報告轉 Word：
+產出寫在目前工作目錄的 `market-intel/<project-slug>/`，包含 brief、價值地圖、`players.yaml`、`evidence.yaml`、比較矩陣、`40-report.md` 與 `40-report.docx`。
 
-```bash
-python scripts/build_docx.py market-intel/<slug>/40-report.md
+## Repo 結構
+
+```
+.claude-plugin/marketplace.json           # marketplace：eddykuo-pm
+plugins/pm-market-intel/
+├── .claude-plugin/plugin.json
+└── skills/market-intel/
+    ├── SKILL.md                          # orchestrator
+    ├── agents/                           # value-mapper / landscape-scout / comparator
+    ├── schemas/                          # player / evidence / comparison-dims
+    ├── templates/                        # brief / report
+    └── scripts/                          # build_docx.py / diff_landscape.py
 ```
 
 ## 證據等級

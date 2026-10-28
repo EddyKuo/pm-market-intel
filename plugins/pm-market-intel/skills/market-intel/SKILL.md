@@ -1,9 +1,13 @@
 ---
-name: pm-market-intel
+name: market-intel
 description: 以產品經理視角做面向市場的市調：用「功能/成本/營收」價值框架切分市場，建立產業鏈名單（品牌、施工/SI、通路），收集展覽與規格書證據，做固定維度競品比較，輸出市調報告 .md（可轉 Word），並支援定期搜尋更新與差異比對。用於「幫我做 X 市場的市調」「建立 X 產業名單」「更新上次的市調」。不產出 PRD 或功能規劃。
 ---
 
 # PM Market Intel（v1：市調）
+
+> **路徑約定**：下文的 `agents/`、`schemas/`、`templates/`、`scripts/` 都位於**本 skill 的目錄**（載入時顯示的 base directory，以下稱 `<SKILL_DIR>`）。市調產出寫在**使用者目前的工作目錄**下的 `market-intel/`。
+>
+> **相依套件**：首次執行腳本前確認 `python3 -c "import docx, yaml"`；缺少時執行 `pip install python-docx pyyaml`（受管環境加 `--break-system-packages` 或用 venv）。
 
 面向市場的市調 pipeline。目標是把「市場上有誰、在賣什麼、靠什麼賺錢、缺口在哪」變成可追溯、可定期更新的資料集與報告。
 
@@ -83,7 +87,7 @@ market-intel/<project-slug>/
 ### Step 5 — 市調報告
 依 `templates/report.md` 寫 `40-report.md`，然後：
 ```bash
-python scripts/build_docx.py market-intel/<slug>/40-report.md
+python3 <SKILL_DIR>/scripts/build_docx.py market-intel/<slug>/40-report.md
 ```
 產出同名 `.docx`。報告最後一節是「市場機會結論」：值得進入的 segment 排序 + 理由 + 待驗證假設。**不寫功能規格。**
 
@@ -94,7 +98,7 @@ python scripts/build_docx.py market-intel/<slug>/40-report.md
 3. 更新 `players.yaml`（更新 `last_verified`，退出者 `status: inactive`，不刪除）
 4. 執行：
    ```bash
-   python scripts/diff_landscape.py snapshots/players-<上次>.yaml players.yaml > snapshots/delta-<today>.md
+   python3 <SKILL_DIR>/scripts/diff_landscape.py market-intel/<slug>/snapshots/players-<上次>.yaml market-intel/<slug>/players.yaml > market-intel/<slug>/snapshots/delta-<today>.md
    ```
 5. 在 delta 報告末尾補 3–5 句「這次變化對市場判斷的影響」
 
