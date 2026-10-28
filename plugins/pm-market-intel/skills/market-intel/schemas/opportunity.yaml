@@ -1,0 +1,24 @@
+# opportunities.yaml：頂層是 list，每筆一個「產品機會假說」——不是結論，是下一步要驗證的東西
+- id: O-0001
+  hypothesis: "中型工廠的設備維運人員需要不必連雲端就能看到的即時告警，現有方案都綁雲端訂閱"
+  segment: S-01
+  stakeholder: user             # user 使用者 | buyer 採購者 | decision_maker 決策者
+  lens: 功能
+  gap_type: supply              # supply 供給缺口（需求有證據、現有方案不足）
+                                # | information 資訊缺口（查不到，不代表沒人做）
+                                # | hypothesis 待驗證假說（尚無需求證據）
+  evidence_for: [E-0004, E-0007]
+  evidence_against: [E-0009]    # 反證必填；真的找不到寫 []，並在 notes 說明找過哪些地方
+  fit:                          # 我方適配度（依 00-brief.md 的我方能力）
+    score: 4                    # 1–5
+    rationale: "既有 gateway 已具備本地端資料處理"
+  scores:                       # 1–5
+    problem_importance: 4       # 問題對該角色有多痛（頻率 × 損失）
+    unmet: 3                    # 現有替代方案的不足程度
+  evidence_strength: moderate   # strong | moderate | weak，依 SKILL.md 規則，validate.py 會檢查
+  kill_criteria:
+    - "訪談 8 位維運人員中少於 3 位把本地告警列為前三大痛點"
+  validation_next:
+    - { method: interview, question: "最近一次漏接告警發生在什麼時候？造成什麼損失？" }
+  status: open                  # open | validated | killed
+  notes: null
